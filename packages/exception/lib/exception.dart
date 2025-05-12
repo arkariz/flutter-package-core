@@ -1,4 +1,4 @@
-library exception;
+library;
 
 // Enum
 export 'src/enum/exception_code.dart';

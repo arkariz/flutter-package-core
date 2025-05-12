@@ -286,7 +286,7 @@ void main() {
 
     test('should throw GeneralException for unhandled exceptions', () async {
       // Arrange
-      final call = () async => throw Exception('Some other error');
+      call() async => throw Exception('Some other error');
 
       // Act & Assert
       expect(

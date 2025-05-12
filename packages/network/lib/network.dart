@@ -1,4 +1,4 @@
-library network;
+library;
 
 export 'src/dio/dio_service.dart';
 export 'src/dio/dio_builder.dart';

@@ -47,6 +47,8 @@ class LoggingInterceptor extends Interceptor {
       return;
     }
 
-    print(message);
+    if (kDebugMode) {
+      print(message);
+    }
   }
 }
