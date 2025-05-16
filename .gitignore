@@ -11,3 +11,7 @@
 .dart_tool/
 build
 pubspec.lock
+
+*generated_plugins_registrant.cc
+*generated_plugins_registrant.h
+*generated_plugins.cmake
