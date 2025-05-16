@@ -5,34 +5,37 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.2] - 2025-05-17
+
+### Package Changes
+- Security package: 1.0.2
+  - Update Changelog
+
 ## [1.0.1] - 2025-05-16
 
-### Changed
-- Restructured security package documentation
-  - Updated key management patterns
-  - Improved examples in README
-  - Fixed changelog format
+### Package Changes
+- Security package: 1.0.1
+  - Documentation improvements
+  - Key management pattern updates
+  - Changelog format fixed
 
 ## [1.0.0] - 2025-05-16
 
-### Added
-- Added security package
-  - AES encryption with CBC mode
-  - HMAC hashing with multiple algorithms
-  - Secure key management
-  - String extensions for encryption/decryption
-  - Platform-specific key support
-  - Documentation and examples
+### Package Changes
+- Security package: 1.0.0 (initial release)
+- Storage package: 0.0.1
+- Exception package: 0.0.1
+- Network package: 0.0.1
 
-- Added storage package (#8aeaf67)
-  - Implemented storage with preferences
-  - Added database support using Hive
+### Fixed
+- Fixed auth header assignment (#78d782c)
+  - Fixed wrong assignment in requiredAuthApikey
+  - Ensured proper API key handling Hive
   - Set up encryption for sensitive data
 
 - Added example app (#c23a656, #3a36e1b, #e9206de)
   - Implemented base example framework
   - Added example menu navigation
-  - Added storage example implementation
   - Updated example app documentation
   - Updated ndkVersion for Android compatibility (#85f9908)
 
@@ -72,7 +75,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Basic project structure
   - Initial README.md
 
-[Unreleased]: https://github.com/arkariz/flutter-package-core/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/arkariz/flutter-package-core/compare/1.0.2...HEAD
+[1.0.2]: https://github.com/arkariz/flutter-package-core/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/arkariz/flutter-package-core/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/arkariz/flutter-package-core/compare/0.0.1...1.0.0
 [0.0.1]: https://github.com/arkariz/flutter-package-core/releases/tag/0.0.1
