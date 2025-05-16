@@ -1,6 +1,7 @@
 name: example
 description: "A new Flutter project."
 version: 1.0.0+1
+publish_to: none
 
 environment:
   sdk: ^3.7.2
@@ -10,6 +11,13 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: 1.0.8
+  storage:
+    path: ../../packages/storage
+
+  exception:
+    path: ../../packages/exception
+  get_it: ^8.0.3
+  hive_ce: ^2.11.1
 
 dev_dependencies:
   flutter_test:

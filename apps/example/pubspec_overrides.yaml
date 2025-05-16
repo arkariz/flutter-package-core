@@ -1,0 +1,6 @@
+# melos_managed_dependency_overrides: exception,storage
+dependency_overrides:
+  exception:
+    path: ..\\..\\packages\\exception
+  storage:
+    path: ..\\..\\packages\\storage
