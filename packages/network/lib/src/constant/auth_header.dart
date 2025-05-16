@@ -6,5 +6,5 @@ class AuthHeader {
 
   static const Map<String, String> requiredApikey = {requiredAuth: apikey};
   static const Map<String, String> requiredAuthorization = {requiredAuth: authorization};
-  static const Map<String, String> requiredAuthApikey = {requiredAuth: authorization, apikey: apikey};
+  static const Map<String, String> requiredAuthApikey = {requiredAuth: authApikey};
 }
