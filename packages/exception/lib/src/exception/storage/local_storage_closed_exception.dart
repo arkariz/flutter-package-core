@@ -1,10 +1,9 @@
 import 'package:exception/exception.dart';
-import 'package:exception/src/exception/core_exception.dart';
 import 'package:exception/src/model/exception_rule.dart';
 import 'package:hive_ce/hive.dart';
 
-class LocalStorageAlreadyOpenedException extends CoreException {
-  LocalStorageAlreadyOpenedException({
+class LocalStorageClosedException extends CoreException {
+  LocalStorageClosedException({
     required this.module,
     required this.layer,
     required this.function,
@@ -15,7 +14,7 @@ class LocalStorageAlreadyOpenedException extends CoreException {
   String module;
 
   @override
-  String get code => generatedCode(code: ExceptionCode.localStorageAlreadyOpened.code);
+  String get code => generatedCode(code: ExceptionCode.localStorageClosed.code);
 
   @override
   String function;
@@ -24,7 +23,7 @@ class LocalStorageAlreadyOpenedException extends CoreException {
   String layer;
 
   @override
-  String? get message => "Local Storage Already Opened";
+  String? get message => "Local Storage Closed";
 
   @override
   Object? stackTrace;
@@ -39,11 +38,11 @@ class LocalStorageAlreadyOpenedException extends CoreException {
   }
 
   /// The rule covered error message below:
-  /// Box "myBox" is already open
-  /// Cannot open box "myBox". It is already open.
-  /// HiveError: Box has already been opened.
-  /// HiveError: Duplicate box name. The box is already open or has been initialized.
-  /// HiveError: You cannot open the same box multiple times.
+  /// "Box has already been closed."
+  /// "box has already been closed"
+  /// "Cannot get value of a closed box."
+  /// "Cannot perform operation on a closed box."
+  /// "Cannot read from a closed box."
   static ExceptionRule rule({
     required String module,
     required String layer,
@@ -52,14 +51,14 @@ class LocalStorageAlreadyOpenedException extends CoreException {
   }) => ExceptionRule(
     predicate: (exception) {
       final regex = RegExp(
-        r'\b(already open(ed)?|duplicate box name|cannot open the same box)\b',
+        r'(box has already been closed|cannot (get|perform|read).+closed box)',
         caseSensitive: false,
       );
 
       return exception is HiveError && regex.hasMatch(exception.message);
     },
     transformer:
-      (exception) => LocalStorageAlreadyOpenedException(
+      (exception) => LocalStorageClosedException(
         module: module,
         layer: layer,
         function: function,

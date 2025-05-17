@@ -1,11 +1,11 @@
-import 'dart:io';
-
+import 'package:dio/dio.dart';
 import 'package:exception/exception.dart';
-import 'package:exception/src/exception/core_exception.dart';
+// ignore: unnecessary_import
+import 'package:exception/src/exception/core/core_exception.dart';
 import 'package:exception/src/model/exception_rule.dart';
 
-class StorageFullException extends CoreException {
-  StorageFullException({
+class RequestTimeOutException extends CoreException {
+  RequestTimeOutException({
     required this.module,
     required this.layer,
     required this.function,
@@ -16,16 +16,16 @@ class StorageFullException extends CoreException {
   String module;
 
   @override
-  String get code => generatedCode(code: ExceptionCode.storageFull.code);
+  String layer;
 
   @override
   String function;
 
   @override
-  String layer;
+  String get code => generatedCode(code: ExceptionCode.requestTimeOut.code);
 
   @override
-  String? get message => "Storage Full";
+  String get message => "Request Timeout";
 
   @override
   Object? stackTrace;
@@ -45,15 +45,15 @@ class StorageFullException extends CoreException {
     required String function,
     Object? stackTrace,
   }) => ExceptionRule(
-    predicate:
-        (exception) =>
-            exception is FileSystemException &&
-            exception.osError?.message.contains("No space left") == true,
+    predicate: (exception) => exception is DioException 
+      && (exception.type == DioExceptionType.receiveTimeout 
+      || exception.type == DioExceptionType.sendTimeout),
     transformer:
-        (exception) => StorageFullException(
-          module: module,
-          layer: layer,
-          function: function,
-        ),
+      (exception) => RequestTimeOutException(
+        module: module,
+        layer: layer,
+        function: function,
+        stackTrace: stackTrace,
+      ),
   );
 }

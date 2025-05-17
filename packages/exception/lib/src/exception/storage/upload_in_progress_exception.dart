@@ -1,8 +1,7 @@
 import 'package:exception/exception.dart';
-import 'package:exception/src/exception/core_exception.dart';
 
-class PermissionDeniedException extends CoreException {
-  PermissionDeniedException({
+class UploadInProgressException extends CoreException {
+  UploadInProgressException({
     required this.module,
     required this.layer,
     required this.function,
@@ -13,19 +12,21 @@ class PermissionDeniedException extends CoreException {
   String module;
 
   @override
-  String get code => generatedCode(code: ExceptionCode.permissionDenied.code);
+  String layer;
 
   @override
   String function;
 
   @override
-  String layer;
+  String get code => generatedCode(code: ExceptionCode.uploadInProgress.code);
 
   @override
-  String? get message => "Permission Denied";
+  String get message => "Upload In Progress Exception";
 
   @override
   Object? stackTrace;
+
+  @override
 
   @override
   ExceptionInfo toInfo({String? title, required ExceptionDisplayType type}) {

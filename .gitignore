@@ -11,6 +11,8 @@
 .dart_tool/
 build
 pubspec.lock
+*.flutter-plugins
+*.flutter-plugins-dependencies
 
 *generated_plugins_registrant.cc
 *generated_plugins_registrant.h

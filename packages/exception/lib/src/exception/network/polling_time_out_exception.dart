@@ -1,5 +1,4 @@
 import 'package:exception/exception.dart';
-import 'package:exception/src/exception/core_exception.dart';
 
 class PollingTimeOutException extends CoreException {
   PollingTimeOutException({

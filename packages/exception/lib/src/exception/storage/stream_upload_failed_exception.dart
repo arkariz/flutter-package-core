@@ -1,8 +1,7 @@
 import 'package:exception/exception.dart';
-import 'package:exception/src/exception/core_exception.dart';
 
-class UploadInProgressException extends CoreException {
-  UploadInProgressException({
+class StreamUploadFailedException extends CoreException {
+  StreamUploadFailedException({
     required this.module,
     required this.layer,
     required this.function,
@@ -19,15 +18,13 @@ class UploadInProgressException extends CoreException {
   String function;
 
   @override
-  String get code => generatedCode(code: ExceptionCode.uploadInProgress.code);
+  String get code => generatedCode(code: ExceptionCode.streamUploadFailed.code);
 
   @override
-  String get message => "Upload In Progress Exception";
+  String get message => "Stream Upload Failed Exception";
 
   @override
   Object? stackTrace;
-
-  @override
 
   @override
   ExceptionInfo toInfo({String? title, required ExceptionDisplayType type}) {

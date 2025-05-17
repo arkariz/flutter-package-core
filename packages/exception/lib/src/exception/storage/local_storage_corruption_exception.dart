@@ -1,5 +1,4 @@
 import 'package:exception/exception.dart';
-import 'package:exception/src/exception/core_exception.dart';
 import 'package:exception/src/model/exception_rule.dart';
 import 'package:hive_ce/hive.dart';
 

@@ -1,8 +1,7 @@
 import 'package:exception/exception.dart';
-import 'package:exception/src/exception/core_exception.dart';
 
-class StreamUploadFailedException extends CoreException {
-  StreamUploadFailedException({
+class RetryExceededException extends CoreException {
+  RetryExceededException({
     required this.module,
     required this.layer,
     required this.function,
@@ -19,10 +18,10 @@ class StreamUploadFailedException extends CoreException {
   String function;
 
   @override
-  String get code => generatedCode(code: ExceptionCode.streamUploadFailed.code);
+  String get code => generatedCode(code: ExceptionCode.retryExceeded.code);
 
   @override
-  String get message => "Stream Upload Failed Exception";
+  String get message => "Retry Exceeded Exception";
 
   @override
   Object? stackTrace;

@@ -1,9 +1,11 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
 import 'package:exception/exception.dart';
-import 'package:exception/src/exception/core_exception.dart';
 import 'package:exception/src/model/exception_rule.dart';
 
-class GeneralException extends CoreException {
-  GeneralException({
+class NoInternetConnectionException extends CoreException {
+  NoInternetConnectionException({
     required this.module,
     required this.layer,
     required this.function,
@@ -20,10 +22,10 @@ class GeneralException extends CoreException {
   String function;
 
   @override
-  String get code => generatedCode(code: ExceptionCode.general.code);
+  String get code => generatedCode(code: ExceptionCode.noInternetConnection.code);
 
   @override
-  String get message => "General Exception";
+  String get message => "No Internet Connection";
 
   @override
   Object? stackTrace;
@@ -32,7 +34,7 @@ class GeneralException extends CoreException {
   ExceptionInfo toInfo({String? title, required ExceptionDisplayType type}) {
     return ExceptionInfo(
       title: title ?? "",
-      description: "Terjadi kesalahan pada proses $function $code",
+      description: "Tidak ada koneksi Internet $code",
       type: type,
     );
   }
@@ -43,9 +45,11 @@ class GeneralException extends CoreException {
     required String function,
     Object? stackTrace,
   }) => ExceptionRule(
-    predicate: (exception) => true,
+    predicate: (exception) => exception is DioException 
+      && exception.type == DioExceptionType.connectionError 
+      || exception is SocketException,
     transformer:
-      (exception) => GeneralException(
+      (exception) => NoInternetConnectionException(
         module: module,
         layer: layer,
         function: function,

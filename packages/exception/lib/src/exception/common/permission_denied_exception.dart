@@ -1,8 +1,7 @@
 import 'package:exception/exception.dart';
-import 'package:exception/src/exception/core_exception.dart';
 
-class RetryExceededException extends CoreException {
-  RetryExceededException({
+class PermissionDeniedException extends CoreException {
+  PermissionDeniedException({
     required this.module,
     required this.layer,
     required this.function,
@@ -13,16 +12,16 @@ class RetryExceededException extends CoreException {
   String module;
 
   @override
-  String layer;
+  String get code => generatedCode(code: ExceptionCode.permissionDenied.code);
 
   @override
   String function;
 
   @override
-  String get code => generatedCode(code: ExceptionCode.retryExceeded.code);
+  String layer;
 
   @override
-  String get message => "Retry Exceeded Exception";
+  String? get message => "Permission Denied";
 
   @override
   Object? stackTrace;
