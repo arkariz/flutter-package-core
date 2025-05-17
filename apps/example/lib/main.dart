@@ -1,3 +1,4 @@
+import 'package:firestore/firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:storage/storage.dart';
@@ -11,6 +12,8 @@ void main() async {
     keySecureStorage: "key_secure_storage",
     openPreference: ({required call, required function, required module}) => openBox(module: module, function: function, call: call),
   );
+
+  FirestoreModule.configure();
 
   await GetIt.I.allReady();
 

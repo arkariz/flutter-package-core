@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../examples/storage_example.dart';
+import '../examples/firestore_example.dart';
 import 'example_base.dart';
 
 class ExampleMenu extends StatelessWidget {
@@ -7,6 +8,7 @@ class ExampleMenu extends StatelessWidget {
 
   List<ExampleBase> get examples => [
     const StorageExample(),
+    const FirestoreExample(),
     // Add more examples here
   ];
 
@@ -26,7 +28,7 @@ class ExampleMenu extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => example.buildExample(context),
+                  builder: (context) => example,
                 ),
               );
             },

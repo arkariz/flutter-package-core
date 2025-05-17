@@ -1,0 +1,24 @@
+name: firestore
+description: "A Flutter package providing Firestore network implementation with a clean API"
+version: 1.0.0
+homepage:
+
+environment:
+  sdk: ^3.7.2
+  flutter: ">=1.17.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cloud_firestore: 5.6.7
+  firebase_core: 3.13.0
+  get_it: 8.0.3
+  logger: 2.5.0
+  provider: 6.1.5
+  json_annotation: 4.9.0
+  mocktail: 1.0.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0

@@ -1,6 +1,9 @@
+# melos_managed_dependency_overrides: firestore
 # melos_managed_dependency_overrides: exception,storage
 dependency_overrides:
   exception:
     path: ..\\..\\packages\\exception
+  firestore:
+    path: ..\\..\\packages\\firestore
   storage:
     path: ..\\..\\packages\\storage
